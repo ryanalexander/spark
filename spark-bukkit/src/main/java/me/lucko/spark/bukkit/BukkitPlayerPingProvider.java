@@ -31,6 +31,8 @@ public class BukkitPlayerPingProvider implements PlayerPingProvider {
 
     public static boolean isSupported() {
         try {
+            if (classExists("org.bukkit.entity.Player$Spigot") == null)
+                return false;
             Player.Spigot.class.getMethod("getPing");
             return true;
         } catch (Exception e) {
